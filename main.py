@@ -9,6 +9,7 @@ def puzirik_sort(nums_1):
 
 random_nums_1 = [5, 2, 1, 8, 4]
 puzirik_sort(random_nums_1)
+print("-----------------------------------------------------------------")
 print("Пузырьковая сортировкa:", random_nums_1)
 
 def shaker_sort(array):
@@ -34,8 +35,10 @@ def shaker_sort(array):
 
 random_nums_2 = [8, 13, 4, 9, 11]
 shaker_sort(random_nums_2)
+print("-----------------------------------------------------------------")
 print("Шейкерная сортировка:", random_nums_2)
 
+print("-----------------------------------------------------------------")
 def sliyanie(nums_3):
     if len(nums_3) > 1:
         mid = len(nums_3) // 2
@@ -65,6 +68,7 @@ nums_3 = [11, 14, 2, 6, 1, 4, 3]
 sliyanie(nums_3)
 print("Сортировка слиянием:", nums_3)
 
+print("-----------------------------------------------------------------")
 print("Сортировка расчёской:")
 massiv = [23, 91, 558, 55, 13]
 def rascheska(massiv):
@@ -84,3 +88,36 @@ def rascheska(massiv):
 print(massiv)
 rascheska(massiv)
 print('Результат сортировки:', massiv)
+
+
+def quicksort(nums_5, start, end):
+    if end - start > 1:
+        p = partition(nums_5, start, end)
+        quicksort(nums_5, start, p)
+        quicksort(nums_5, p + 1, end)
+
+
+def partition(nums_5, start, end):
+    pivot = nums_5[start]
+    i = start + 1
+    j = end - 1
+
+    while True:
+        while (i <= j and nums_5[i] <= pivot):
+            i = i + 1
+        while (i <= j and nums_5[j] >= pivot):
+            j = j - 1
+
+        if i <= j:
+            nums_5[i], nums_5[j] = nums_5[j], nums_5[i]
+        else:
+            nums_5[start], nums_5[j] = nums_5[j], nums_5[start]
+            return j
+
+
+nums_5 = [12, 14, 88, 11, 99, 4, 3]
+nums_5 = [int(x) for x in nums_5]
+quicksort(nums_5, 0, len(nums_5))
+print("-----------------------------------------------------------------")
+print('Быстрая сортировка:', nums_5)
+print("-----------------------------------------------------------------")
