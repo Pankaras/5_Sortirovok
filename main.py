@@ -1,16 +1,15 @@
-def puzirik_sort(nums):
+def puzirik_sort(nums_1):
     swapped = True
     while swapped:
         swapped = False
-        for i in range(len(nums) - 1):
-            if nums[i] > nums[i + 1]:
-                nums[i], nums[i + 1] = nums[i + 1], nums[i]
+        for i in range(len(nums_1) - 1):
+            if nums_1[i] > nums_1[i + 1]:
+                nums_1[i], nums_1[i + 1] = nums_1[i + 1], nums_1[i]
                 swapped = True
-                
-print("Пузырьковая сортировкa:")
-random_nums = [5, 2, 1, 8, 4]
-puzirik_sort(random_nums)
-print(random_nums)
+
+random_nums_1 = [5, 2, 1, 8, 4]
+puzirik_sort(random_nums_1)
+print("Пузырьковая сортировкa:", random_nums_1)
 
 def shaker_sort(array):
     length = len(array)
@@ -33,10 +32,9 @@ def shaker_sort(array):
                 swapped = True
         start_index = start_index + 1
 
-print("Шейкерная сортировка:")
 random_nums_2 = [8, 13, 4, 9, 11]
 shaker_sort(random_nums_2)
-print(random_nums_2)
+print("Шейкерная сортировка:", random_nums_2)
 
 def sliyanie(nums_3):
     if len(nums_3) > 1:
@@ -65,5 +63,24 @@ def sliyanie(nums_3):
 
 nums_3 = [11, 14, 2, 6, 1, 4, 3]
 sliyanie(nums_3)
-print("Сортировка слиянием:")
-print(nums_3)
+print("Сортировка слиянием:", nums_3)
+
+print("Сортировка расчёской:")
+massiv = [23, 91, 558, 55, 13]
+def rascheska(massiv):
+    step = int(len(massiv)/1.247)
+    swap = 1
+    while step > 1 or swap > 0:
+        swap = 0
+        i = 0
+        while i + step < len(massiv):
+            if massiv[i] > massiv[i+step]:
+                massiv[i], massiv[i+step] = massiv[i+step], massiv[i]
+                swap += 1
+            i = i + 1
+        if step > 1:
+            step = int(step / 1.247)
+            print(massiv)
+print(massiv)
+rascheska(massiv)
+print('Результат сортировки:', massiv)
